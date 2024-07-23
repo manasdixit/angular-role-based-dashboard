@@ -1,0 +1,4 @@
+<div class="header">
+  <span *ngIf="user"> Welcome, {{ user.email }} ({{ user.role }}) </span>
+  <button (click)="logout()">Logout</button>
+</div>

@@ -1,0 +1,38 @@
+<div class="dashboard-container">
+  <app-header></app-header>
+  <div>
+    <input
+      type="text"
+      placeholder="Search"
+      (input)="onSearch($event)"
+    />
+    <select (change)="onSort($event)">
+      <option value="asc">Sort A-Z</option>
+      <option value="desc">Sort Z-A</option>
+    </select>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>ProductId</th>
+        <th>ProductName</th>
+        <th>ProductDescription</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of filteredProducts$ | async">
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.description }}</td>
+        <td>{{ product.price }}</td>
+        <td>
+          <button *ngIf="canView()">View</button>
+          <button *ngIf="canEdit()">Edit</button>
+          <button *ngIf="canDelete()">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
